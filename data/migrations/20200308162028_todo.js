@@ -5,7 +5,7 @@ exports.up = async function(knex) {
             table.increments("id")
             table.string("name").unique().notNullable()
             table.string("description")
-            table.boolean("completed").defaultTo("false")
+            table.boolean("completed").defaultTo(false)
         })
         .createTable("resources", table => {
             table.increments("id")
@@ -16,7 +16,7 @@ exports.up = async function(knex) {
             table.increments("id")
             table.string("description").notNullable()
             table.string("notes")
-            table.boolean("completed").defaultTo("false")
+            table.boolean("completed").defaultTo(false)
             table.integer("project_id")
                 .references("id")
                 .inTable("projects")
