@@ -1,7 +1,7 @@
 {
   "name": "node-db-challenge",
   "version": "1.0.0",
-  "description": "pull request:  # Sprint Challenge: Node DB Sprint",
+  "description": "Sprint Challenge: Node DB Sprint",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
