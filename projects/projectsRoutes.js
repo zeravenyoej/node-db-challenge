@@ -26,13 +26,18 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // //create new project
-// router.post('/', async (req, res, next) => {
-//     try {
-
-//     } catch(err) {
-//         next(err)
-//     }
-// })
+router.post('/', async (req, res, next) => {
+    try {
+        if(!req.body.name){
+            return res.status(400).json({message: "name required"})
+        }
+        const [id] = await helper.createProject(req.body)
+        const newProject = await helper.findProjectById(id)
+        res.status(201).json(newProject)
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 

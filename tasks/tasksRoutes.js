@@ -24,7 +24,19 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-
+// //create new task
+router.post('/', async (req, res, next) => {
+    try {
+        if(!req.body.description){
+            return res.status(400).json({message: "description required"})
+        }
+        const [id] = await helper.createTask(req.body)
+        const newTask = await helper.findTaskById(id)
+        res.status(201).json(newTask)
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 

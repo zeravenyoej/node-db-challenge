@@ -25,7 +25,19 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-
+// //create new resource
+router.post('/', async (req, res, next) => {
+    try {
+        if(!req.body.name){
+            return res.status(400).json({message: "name required"})
+        }
+        const [id] = await helper.createResource(req.body)
+        const newResource = await helper.findResourceById(id)
+        res.status(201).json(newResource)
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 module.exports = router
